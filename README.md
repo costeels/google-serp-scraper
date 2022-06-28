@@ -1,2 +1,4 @@
-# google-serp-scraper
-Google SERP Scraper from API
+# Google SERP Scraper from API
+
+Free and simple script to check positions. 
+The service works through the API: https://booapi.com
