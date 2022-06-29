@@ -1,9 +1,9 @@
 <?php
-if (!is_file('config.php')) {
-    throw new Exception('Unable to open configuration file: ./config.php. Please use config.default.php for example.');
+if (!is_file('../config.php')) {
+    throw new Exception('Unable to open configuration file: config.php. Please use config.default.php for example.');
 }
-$config = require('config.php');
-include 'BooApi.php';
+$config = require('../config.php');
+include '../BooApi.php';
 $booapi = new Booapi($config['apiKey'], $config['baseApiUrl']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

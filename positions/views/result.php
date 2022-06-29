@@ -1,5 +1,5 @@
 <?php require_once('./views/header.php'); ?>
-  <a href="positions.php">← Back</a>
+  <a href="index.php">← Back</a>
   <?php if (isset($errors)): ?>
     <h3>Errors:</h3>
       <?php foreach ($errors as $error) : ?>

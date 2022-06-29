@@ -12,4 +12,4 @@ Register at [booapi.com](https://booapi.com) and copy your API key.
 Create configuration file config.php (use config.default.php for example).
 
 ### Step 3
-Open positions.php in your browser (require WEB-server with support of PHP 5.6 or above). Check keywords positions!
+Open one of examples in your browser (require WEB-server with support of PHP 5.6 or above). Enjoy!
