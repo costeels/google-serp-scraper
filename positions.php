@@ -1,5 +1,5 @@
 <?php
-if(!is_file('config.php')) {
+if (!is_file('config.php')) {
     throw new Exception('Unable to open configuration file: ./config.php. Please use config.default.php for example.');
 }
 $config = require('config.php');
@@ -15,7 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $result = $booapi->createTask($data);
     if (isset($result['id'])) {
-        header('Location: ?taskId=' . $result['id']);
+        $queryParams = [
+            'taskId' => $result['id'],
+            'domain' => $_POST['domain'],
+        ];
+        header('Location: ?' . http_build_query($queryParams));
         exit();
     } else {
         $errors = isset($result['errors']) ? $result['errors'] : null;
@@ -23,14 +27,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } elseif (isset($_GET['taskId'])) {
     $taskId = $_GET['taskId'];
+    $domain = $_GET['domain'];
     $status = $booapi->getTaskStatus($taskId);
     if (isset($status['errors'])) {
         $errors = $status['errors'];
         unset($status);
     } elseif ($status['status'] == 'finished') {
-        $limit   = min($status['total'], 100);
-        $offset  = 0;
-        $results = $booapi->getTaskResults($taskId, $limit, $offset);
+        $limit     = min($status['total'], 100);
+        $offset    = 0;
+        $response  = $booapi->getTaskResults($taskId, $limit, $offset);
+        $positions = [];
+        foreach ($response['results'] as $serp) {
+            $position = [
+                'query'    => $serp['query'],
+                'position' => null,
+                'url'      => null,
+            ];
+            foreach ($serp['organic'] as $serpItem) {
+                if ($serpItem['domain'] == $domain) {
+                    $position['position'] = $serpItem['position'];
+                    $position['url']      = $serpItem['url'];
+                    break;
+                }
+            }
+            $positions[] = $position;
+        }
     }
     include 'views/result.php';
 } else {

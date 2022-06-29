@@ -7,11 +7,14 @@
         <?php endforeach; ?>
     <?php endif; ?>
     <form method="post">
+      <label>domain*:
+        <input type="text" name="domain" value="<?php echo isset($_POST['domain']) ? $_POST['domain'] : '' ?>">
+      </label><br>
       <label>keywords*:
-        <textarea id="keywords" name="keywords"><?php echo isset($_POST['keywords']) ? $_POST['keywords'] : '' ?></textarea>
+        <textarea name="keywords"><?php echo isset($_POST['keywords']) ? $_POST['keywords'] : '' ?></textarea>
       </label><br>
       <label>googleId:
-        <input type="number" id="googleId" name="googleId" value="<?php echo isset($_POST['googleId']) ? $_POST['googleId'] : '' ?>">
+        <input type="number" name="googleId" value="<?php echo isset($_POST['googleId']) ? $_POST['googleId'] : '' ?>">
       </label><br>
       device:
       <label>desktop
