@@ -1,4 +1,4 @@
-<?php require_once('./views/header.php'); ?>
+<?php require_once('header.php'); ?>
   <a href="index.php">← Back</a>
   <?php if (isset($errors)): ?>
     <h3>Errors:</h3>
@@ -29,4 +29,4 @@
       <input type="submit" value="Update">
     </form>
   <?php endif; ?>
-<?php require_once('./views/footer.php'); ?>
+<?php require_once('footer.php'); ?>

@@ -1,4 +1,4 @@
-<?php require_once('./views/header.php'); ?>
+<?php require_once('header.php'); ?>
   <?php if (isset($errors)): ?>
     <h3>Errors:</h3>
       <?php foreach ($errors as $error) : ?>
@@ -7,13 +7,18 @@
   <?php endif; ?>
   <form method="post">
     <div class="mb-3">
-      <label for="keywords" class="form-label">Keywords*</label>
-      <textarea id="keywords" class="form-control" name="keywords"><?php echo isset($_POST['keywords']) ? $_POST['keywords'] : '' ?></textarea>
+      <label>domain*
+        <input class="form-control" type="text" name="domain" value="<?php echo isset($_POST['domain']) ? $_POST['domain'] : '' ?>">
+      </label><br>
     </div>
-
     <div class="mb-3">
-      <label>googleId:
-        <input class="form-control" type="number" id="googleId" name="googleId" value="<?php echo isset($_POST['googleId']) ? $_POST['googleId'] : '' ?>">
+      <label for="keywords" class="form-label">keywords*
+      <textarea class="form-control" name="keywords"><?php echo isset($_POST['keywords']) ? $_POST['keywords'] : '' ?></textarea>
+      </label>
+    </div>
+    <div class="mb-3">
+      <label>googleId
+        <input class="form-control" type="number" name="googleId" value="<?php echo isset($_POST['googleId']) ? $_POST['googleId'] : '' ?>">
       </label><br>
     </div>
     <div class="mb-3">
@@ -41,4 +46,4 @@
     </div>
     <input type="submit" value="Create">
   </form>
-<?php require_once('./views/footer.php'); ?>
+<?php require_once('footer.php'); ?>
