@@ -1,6 +1,10 @@
-# Google SERP Scraper from API
+# Google SERP Scraper Tools from API
+Easy and simple tools for seo and marketing.
 
-Free and simple script to check positions. 
+1) SERP Checker (dir: serp)
+2) Rank Tracker (dir: positions)
+3) Indexing checker (dir: indexing)
+
 The service works through the API: [booapi.com](https://booapi.com)
 
 ## Follow three steps
